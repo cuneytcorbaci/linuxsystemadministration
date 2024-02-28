@@ -1,0 +1,2 @@
+Determine_and_configure_hardware_settings
+Boot the System
