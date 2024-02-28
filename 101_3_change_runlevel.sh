@@ -1,4 +1,5 @@
 #Runlevels define what tasks can be accomplished in the current state (or runlevel) of a Linux system. Think of it as different stages of *being alive*.
+
 #SYSTEMD
 #On systemd, we have different targets which are groups of services:
 
@@ -37,38 +38,37 @@ root@debian:~# systemctl status multi-user.target
        Docs: man:systemd.special(7)
 
 #It is also possible to *isolate* any of the targets or move to two special targets too:
+#1. `rescue`: Local file systems are mounted, there is no networking, and only root user (*maintenance* mode)
+#2. `emergency`: Only the root file system and in read-only mode, No networking and only root (*maintenance* mode)
+#3. `reboot`
+#4. `halt`: Stops all processes and halts CPU activities
+#5. `poweroff`: Like halt but also sends an ACPI shutdown signal (No lights!)
 
-1. `rescue`: Local file systems are mounted, there is no networking, and only root user (*maintenance* mode)
-2. `emergency`: Only the root file system and in read-only mode, No networking and only root (*maintenance* mode)
-3. `reboot`
-4. `halt`: Stops all processes and halts CPU activities
-5. `poweroff`: Like halt but also sends an ACPI shutdown signal (No lights!)
+systemctl isolate emergency
 
-
-# systemctl isolate emergency
 Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
 Give root password for maintenance
 (or type Control-D to continue):
 #
 # systemctl is-system-running
 maintenance
-#____________________________________________________________________________________________________________________________________________________________________________
 
-#SysV runlevels
+
+#SysV RUNLEVELS
     #On SysV we were able to define different stages. On a Red Hat-based system we usually had 7:
-- 0- Shutdown
-- 1- Single-user mode (recovery); Also called S or s
-- 2- Multi-user without networking
-- 3- Multi-user with networking
-- 4- to be customized by the admin
-- 5- Multi-user with networking and graphics
-- 6- Reboot
+    #- 0- Shutdown
+    #- 1- Single-user mode (recovery); Also called S or s
+    #- 2- Multi-user without networking
+    #- 3- Multi-user with networking
+    #- 4- to be customized by the admin
+    #- 5- Multi-user with networking and graphics
+    #- 6- Reboot
 
 #And in Debian based system we had:
-- 0- Shutdown
-- 1- Single-user mode
-- 2- Multi-user mode with graphics
-- 6- Reboot
+    #- 0- Shutdown
+    #- 1- Single-user mode
+    #- 2- Multi-user mode with graphics
+    #- 6- Reboot
 
 #Checking status and setting defaults
     #You can check your current runlevel with `runlevel` command. It comes from SysV era but still works on systemd systems. The default was in `/etc/inittab`
@@ -88,11 +88,9 @@ N 3
 
 #You can find the files in `/etc/init.d` and runlevels in `/etc/rc[0-6].d` directories where S indicates Start and K indicates Kill.
 #On systemd, you can find the configs in:
-
-- `/etc/systemd`
-- `/usr/lib/systemd/`
-
-#/etc/inittab
+    #- `/etc/systemd`
+    #- `/usr/lib/systemd/`
+    #/etc/inittab
 
 Is being replaced by upstart and systemd but is still part of the exam.
 
