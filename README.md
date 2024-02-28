@@ -1,2 +1,2 @@
-Determine_and_configure_hardware_settings
+Determine and Configure Hardware Settings
 Boot the System
