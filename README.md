@@ -4,3 +4,4 @@
 102.1 Design hard disk layout
 102.3 Manage shared libraries
 102.4 Use Debian package management
+102.5 Use RPM and YUM package management
