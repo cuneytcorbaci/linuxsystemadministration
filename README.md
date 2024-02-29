@@ -7,3 +7,4 @@
 102_5 Use RPM and YUM package management
 102_6 Linux as a virtualization guest
 103_1 Work on the command line
+103_2 Process Text Streams Using Filters
