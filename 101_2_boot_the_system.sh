@@ -1,11 +1,11 @@
-#The Boot Process is Important.You should have a good understanding of what is happening.
+#The Boot Process is Important.You should have a good understanding of what is happening !!
     #1. Motherboard Firmware does a PowerOnSelfTest
     #2. Motherboard loads the bootloader
     #3. Bootloader loads the Linux Kernel-based on its configs/commands
     #4. The Kernel loads and prepares the system (root filesystem) and runs the initialization program
     #5. Init program start the service, other programs, ... (web server, graphical interface, networking, etc.)    
 
-#UEFI (Unified Extensible Firmware Interface)**    
+#UEFI (Unified Extensible Firmware Interface)    
     # Specifies a special disk partition for the bootloader. Called EFI System Partition (ESP)
     # ESP is FAT and mounted on `/boot/efi` and bootloader files has .efi extensions
     # You can check `/sys/firmware/efi` to see if you are using a UEFI system or not.
@@ -25,12 +25,13 @@
     #Inıt runs initializes everything else you need like webservers like network time protocol etc. 
 
 #dmesg
-#Linux will show you the boot process logs during the boot. Some desktop systems hide this behind a fancy boot splash which you can hide using the Esc key or press Ctrl+Alt+F1. 
-#dmesg command will show the full data from **kernel ring buffer** up to now. But `cat /var/log/dmesg` will show only the data during the boot.
-#We can also use `journalctl -k` to check Kernel logs or use `journalctl -b` to check for boot logs (or even use `journalctl -u kernel` to see all previous logs too).
-#In addition to these, most systems keep the boot logs in a text-like file too. Under Debian-based systems, it's called `/var/log/boot` and for RedHat-based systems, it's `/var/log/boot.log`.
+    #Linux will show you the boot process logs during the boot.
+    #Some desktop systems hide this behind a fancy boot splash which you can hide using the Esc key or press Ctrl+Alt+F1. 
+    #dmesg command will show the full data from **kernel ring buffer** up to now. But `cat /var/log/dmesg` will show only the data during the boot.
+    #We can also use `journalctl -k` to check Kernel logs or use `journalctl -b` to check for boot logs (or even use `journalctl -u kernel` to see all previous logs too).
+    #In addition to these, most systems keep the boot logs in a text-like file too. Under Debian-based systems, it's called `/var/log/boot` and for RedHat-based systems, it's `/var/log/boot.log`.
 
-ccorbaci@B166ER:~$ cat /var/log/messages
+ cat /var/log/messages
 
 #After the init process comes up, syslog daemon will log messages. It has timestamps and will persist during restarts.
 #- The Kernel is still logging its messages in dmesg
@@ -50,10 +51,10 @@ ccorbaci@B166ER:~$ cat /var/log/messages
     #Is the older init system. Still can be used on many systems. The control files are located at `/etc/init.d/` and are closer to the general bash scripts.
     #In many cases you can call like:
 
-/etc/init.d/ntpd status
-/etc/init.d/ntpd stop
-/etc/init.d/ntpd start
-/etc/init.d/ntpd restart
+    /etc/init.d/ntpd status
+    /etc/init.d/ntpd stop
+    /etc/init.d/ntpd start
+    /etc/init.d/ntpd restart
 
 #systemd
     #Is the new replacement. Some people hate it but it is being used by all the major distros. Can start services in parallel and do lots of fancy stuff!
@@ -66,12 +67,12 @@ ccorbaci@B166ER:~$ cat /var/log/messages
 #UpStart
     #was an event-based replacement for the traditional init daemon. The project was started in 2014 by Canonical (the company behind Ubuntu) to replace the SysV but did not continue after 2015 and Ubuntu is now using the systemd as its init system.
 
-ccorbaci@cuneytnote:~$ which init
-/usr/sbin/init
-ccorbaci@cuneytnote:~$ readlink -f /usr/sbin/init
-/usr/lib/systemd/systemd
+    which init
+        /usr/sbin/init
+    readlink -f /usr/sbin/init
+        /usr/lib/systemd/systemd
 
 
-ccorbaci@cuneytnote:~$ ps -p 1
-    PID TTY          TIME CMD
-      1 ?        00:00:02 systemd
+    ps -p 1
+        PID TTY          TIME CMD
+        1 ?        00:00:02 systemd
