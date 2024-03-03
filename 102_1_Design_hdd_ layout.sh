@@ -108,12 +108,12 @@
     #Disk layout and allocation partitions to directories depend on your usage. First, we will discuss *swap* and *boot* and then will see three different cases.
 
     #swap
-    #Swap in Linux works like an extended memory. The Kernel will *page* memory to this partition/file. It is enough to format one partition with **swap file system** and define it in `/etc/fstab` (you will see this later in 104 modules).
-    #Note: There is no strict formula for swap size. People used to say "double the ram but not more than 8GB". On recent machines with SSDs,some say "RAM + 2" (Hibernation + some extra ) or "RAM * 2" depending on your usage.
+        #Swap in Linux works like an extended memory. The Kernel will *page* memory to this partition/file. It is enough to format one partition with **swap file system** and define it in /etc/fstab.
+        #Note: There is no strict formula for swap size. People used to say "double the ram but not more than 8GB". On recent machines with SSDs,some say "RAM + 2" (Hibernation + some extra ) or "RAM * 2" depending on your usage.
 
-#/boot
-    #Older Linux systems were not able to handle HUGE disks during the boot (say Terabytes) so there was a separated `/boot`. It is also useful to recover broken systems or even you can make `/boot` read-only. Most of the time, having 100MB for `/boot` is enough. 
-    #This can be a different disk or a separated partition.
-    #This partition should be accessible by BIOS/UEFI during the boot (No network drive).
-    #On UEFI systems, there is a `/boot/efi` mount point called
-    #EFI (Extensible Firmware Interface) system partition or ESP. Thiscontains the bootloader and kernel and should be accessible by the UEFI firmware during the boot.
+    #/boot
+        #Older Linux systems were not able to handle HUGE disks during the boot (say Terabytes) so there was a separated **/boot**. It is also useful to recover broken systems or even you can make /boot read-only. Most of the time, having 100MB for `/boot` is enough. 
+        #This can be a different disk or a separated partition.
+        #This partition should be accessible by BIOS/UEFI during the boot (No network drive).
+        #On UEFI systems, there is a **/boot/efi** mount point called
+        #EFI (Extensible Firmware Interface) system partition or ESP. Thiscontains the bootloader and kernel and should be accessible by the UEFI firmware during the boot.
