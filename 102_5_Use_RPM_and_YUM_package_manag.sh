@@ -42,7 +42,7 @@
 
  #This is a sample installation:
 
- deneme
+ 
 
  yum install bzr
  
