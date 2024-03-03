@@ -42,6 +42,8 @@
 
  #This is a sample installation:
 
+ deneme
+
  yum install bzr
  
  #You can also use the wildcards:
