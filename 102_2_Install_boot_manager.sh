@@ -1,14 +1,14 @@
 #Boot overview
-    #Most systems use BIOS or UEFI. When on BIOS, the system will do a self test called POST (Power-On Self-Test)
+    #When on BIOS, the system will do a self test called POST (Power-On Self-Test)
     #Then it will hand over the boot process to the first sector of Master Boot Record (MBR) which is track (Cylinder) 0, side (Head) 0 and Sector 1 of the first disk.
     #MBR is only 512 bytes so we need a *smart bootloader* to handle larger boot managers and even multiple systems. Some of these boot loaders are LILO, GRUB and GRUB2.
     #If the system is using UEFI, the hardware will follow the UEFI stages. They start with a security phase and will continue till the end phase where the UEFI looks for an EFI System Partition, which is just a 
-    #FAT32 partition (Usually the first one, but that's implementation-defined) with PE executables and runs them.
+        #FAT32 partition (Usually the first one, but that's implementation-defined) with PE executables and runs them.
     #In both cases, the binary starts the boot loader. It might be a complete bootloader on `/boot/efi/` of your computer or a small loader for the main grub on the MBR or a windows loader or even a chainloader.
     #Chain Loading is when a boot loader, loads another boot loader. This is done when a Linux bootloader needs to start a Windows system.
 
 #GRUB_ Grand Unified Bootloader
-    #started to replace the older LILO. The first version (1) is called Grub Legacy and started in 1999. The 2nd version started in 2005 and is a complete rewrite of version 1.
+    #Started to replace the older LILO. The first version (1) is called Grub Legacy and started in 1999. The 2nd version started in 2005 and is a complete rewrite of version 1.
     #It's a menu-based system where you can choose which Kernel or chainloader to boot. It is also possible to edit the menus on the fly or give direct commands from a command line.
     #Grub Legacy_Usually the GRUB v1 (actually 0.9) is installed in `/boot/grub`. Its main configuration is in `/boot/grub/menu.lst` but nowadays some distros (including RedHat Based ones) link this to the `/boot/grub/grub.conf`.
     #A sample `menu.lst` / `grub.conf` file for GRUB legacy consists of two sections. The first section contains global configs and the 2nd part defines different kernel/initram or chainloader options.
@@ -78,21 +78,21 @@
             chainloader +1
         ------------------------------------------------------------------------------------------------------------------------
 
-#GRUB (legacy) commands
-    #After creating the configuration, you need to install the grub on a disk MBR. To do this you can use two different formats:
+    #GRUB (legacy) commands
+        #After creating the configuration, you need to install the grub on a disk MBR. To do this you can use two different formats:
 
-    # grub-install /dev/fd0
-    # grub-install '(fd0)'
+        grub-install /dev/fd0
+        grub-install '(fd0)'
 
 
-    #Just like any other boot manager, you can install grub on a CD, floppy, MBR (`/dev/sda`, `/dev/sdb`, ..) or a partition (`/dev/sdb2`, `/dev/sda6`, ..). 
-    #But if you want to install it on anywhere other than the MBR, use a chainloader to point your boot sequence toward it.
-    #If you needed to change or reconfigure anything during the startup, just press the `e` on that item and you'll get an interactive editing environment. 
-    #Press **Enter** when done and `b` for boot.
+        #Just like any other boot manager, you can install grub on a CD, floppy, MBR (`/dev/sda`, `/dev/sdb`, ..) or a partition (`/dev/sdb2`, `/dev/sda6`, ..). 
+        #But if you want to install it on anywhere other than the MBR, use a chainloader to point your boot sequence toward it.
+        #If you needed to change or reconfigure anything during the startup, just press the `e` on that item and you'll get an interactive editing environment. 
+        #Press **Enter** when done and `b` for boot.
 
-    #Interacting with GRUB Legacy**
-    #If you press `c` on the grub menu, you will go into the *GRUB Command Line* or *GRUB shell*. 
-    #There you can type commands like `root` and `kernel` and `initrd` and boot the system with `boot` or press the `Esc` key to return back to the menu.
+        #Interacting with GRUB Legacy**
+        #If you press `c` on the grub menu, you will go into the *GRUB Command Line* or *GRUB shell*. 
+        #There you can type commands like `root` and `kernel` and `initrd` and boot the system with `boot` or press the `Esc` key to return back to the menu.
     
 #GRUB2
     #This is the most common boot loader these days. On BIOS systems it is installed on `/boot/grub/` or `/boot/grub2/` and under UEFI it goes in `/boot/efi/EFI/distro-name/` (say `/boot/efi/EFI/fedora/`). GRUB2's configuration file is called `grub.cfg`.
