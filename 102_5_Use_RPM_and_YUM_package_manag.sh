@@ -1,7 +1,5 @@
-#RedHat Package Manager (RPM)
- #and **YellowDog Update Manager (YUM)** are used by Fedora, RedHat, RHEL, CentOS, RocksOS, ... to manage packages.
- #The package format is called RPM and can be managed by `rpm` tools but if you want to use the repositories to install, update, search, ... packages, or even upgrade the whole system, you can use the `yum` command. To have a deeper understanding of the repositories, please refer to the previous section (102.4); Here I assume that you know the 
- #concept.
+#RedHat Package Manager (RPM) and **YellowDog Update Manager (YUM)** are used by Fedora, RedHat, RHEL, CentOS, RocksOS, ... to manage packages.
+ #The package format is called RPM and can be managed by `rpm` tools but if you want to use the repositories to install, update, search, ... packages, or even upgrade the whole system, you can use the `yum` command. 
 
 #yum
  #`yum` is the package manager used by RedHat-based systems. Its configuration files are located at `/etc/yum.conf` and `/etc/yum.repos.d/`. Below is a sample.
@@ -24,23 +22,23 @@
 
  #And here you can find some of the commands:
 
- | Command | Description |
- | --- | --- |
- | update | Updates the repositories and update the names of packages, or all if nothing is named |
- | install | Install a package |
- | reinstall | Reinstall a package |
- | list | Show a list of packages |
- | info | Show information about a package |
- | remove | Removes an installed package |
- | search | Searches repositories for packages |
- | provides | Check which packages provide a specific file |
- | upgrade | Upgrades packages and removes the obsolete ones |
- | localinstall | Install from a local rpm file |
- | localupdate | Updates from a local rpm file |
- | check-update | Checks repositories for updates to the installed packages |
- | deplist | Shows dependencies of a package |
- | groupinstall | Install a group, say "KDE Plasma Workspaces" |
- | history | Show history of the usage |
+ | Command        | Description                                                                           |
+ | ---            | ---                                                                                   |
+ | update         | Updates the repositories and update the names of packages, or all if nothing is named |
+ | install        | Install a package                                                                     |
+ | reinstall      | Reinstall a package                                                                   |
+ | list           | Show a list of packages                                                               |
+ | info           | Show information about a package                                                      |
+ | remove         | Removes an installed package                                                          |
+ | search         | Searches repositories for packages                                                    |
+ | provides       | Check which packages provide a specific file                                          |
+ | upgrade        | Upgrades packages and removes the obsolete ones                                       |
+ | localinstall   | Install from a local rpm file                                                         |
+ | localupdate    | Updates from a local rpm file                                                         |
+ | check-update   | Checks repositories for updates to the installed packages                             |
+ | deplist        | Shows dependencies of a package                                                       |
+ | groupinstall   | Install a group, say "KDE Plasma Workspaces"                                          |
+ | history        | Show history of the usage                                                             |
 
  #This is a sample installation:
 
@@ -68,7 +66,7 @@
  | -e           | --erase       | Removes a package                         |
  | -U           | --upgrade     | Installs/Upgrades a package               |
  | -q           | --query       | Checks if the package is installed        |
- | -F           | --freshen     | Only update if its already installed     |
+ | -F           | --freshen     | Only update if its already installed      |
  | -V           | --verify      | Check the integrity of the installation   |
  | -K           | --checksig    | Checks the integrity of an rpm package    |
 
@@ -83,12 +81,12 @@
  #Query
  # A normal query is like this:
 
- [root@fedora tmp]# rpm -q breezy-3.2.1-3.fc36.x86_64.rpm
- breezy-3.2.1-3.fc36.x86_64
- [root@fedora tmp]# rpm -q breezy
- breezy-3.2.1-3.fc36.x86_64
- [root@fedora tmp]# rpm -q emacs
- package emacs is not installed
+ rpm -q breezy-3.2.1-3.fc36.x86_64.rpm
+  breezy-3.2.1-3.fc36.x86_64
+ rpm -q breezy
+  breezy-3.2.1-3.fc36.x86_64
+ rpm -q emacs
+  package emacs is not installed
 
  #And you can use these options to spice it up:
 
@@ -105,7 +103,7 @@
  #Verify
  #You can verify your packages and see if they are installed correctly or not. You can use the `-Vv` option for verbose output or just use the `-V` to verify and see only the issues. This is the output after I edited the `/bin/tmux` manually:
  
- [root@fedora tmp]# rpm -V tmux
+ rpm -V tmux
   S.5....T.    /usr/bin/tmux`
 
  #And this is part of the `man rpm`'s `-V` section:
@@ -135,7 +133,7 @@
 
  #Uninstall
 
- [root@fedora tmp]# rpm -e tmux
+ rpm -e tmux
  error: Failed dependencies:
     tmux is needed by (installed) anaconda-install-env-deps-36.16.5-1.fc36.x86_64`
 
