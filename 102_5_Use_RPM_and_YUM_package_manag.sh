@@ -42,8 +42,6 @@
 
  #This is a sample installation:
 
- 
-
  yum install bzr
  
  #You can also use the wildcards:
@@ -80,15 +78,7 @@
  #If you have an rpm with all of its dependencies, you can install them using `rpm -Uvh *.rpm`. This will tell rpm not to complain about the dependencies if it is presented in other files. Here the `-h` creates 50 hash signs to show the progress.
  #In some cases - if you know what you are doing - you can use `--nodeps` to prevent the dependency check or even use `--force` to force the install / upgrade despite all the issues & complains.
 
- #Query
- # A normal query is like this:
-
- rpm -q breezy-3.2.1-3.fc36.x86_64.rpm
-  breezy-3.2.1-3.fc36.x86_64
- rpm -q breezy
-  breezy-3.2.1-3.fc36.x86_64
- rpm -q emacs
-  package emacs is not installed
+rpm -ivh breezy-3.2.1.rpm
 
  #And you can use these options to spice it up:
 
